@@ -2,9 +2,11 @@
 
 > **Hackathon simulation prototype.** SENTINEL-X demonstrates a decision-support command center with simulated personnel, environmental risk, infrastructure/cyber indicators, scenario controls, audit history, and incident replay. It does not connect to real personnel, sensors, dispatchers, or operational systems. AI-generated outputs are illustrative only; human approval is required.
 
-## Live demo
+## Live demos
 
-[Open the SENTINEL-X prototype on Manus](https://sentinelx-mmfhbx3g.manus.space/)
+- **GitHub Pages (static frontend):** https://chinmays17072006.github.io/SENTINEL-X/ — available after the GitHub Pages workflow deploys successfully.
+- **Existing full prototype on Manus:** [Open the SENTINEL-X prototype](https://sentinelx-mmfhbx3g.manus.space/)
+- **Container deployment on Render:** [Open SENTINEL-X on Render](https://sentinel-x-6onw.onrender.com/)
 
 ## Highlights
 
@@ -23,6 +25,7 @@
 - **Container:** `Dockerfile` (Python 3.12)
 - **Deploy configuration:** `render.yaml` describes a Render Docker web service.
 - **Optional map proxy:** server-side environment variables `MANUS_API_URL` and `MANUS_API_KEY`. Do not commit credentials or expose them to browser code.
+- **GitHub Pages:** an automated workflow publishes the static files from `public/`. The GitHub Pages version uses the local schematic map fallback; GitHub Pages cannot execute the Python map proxy.
 - **State:** simulation state, audit history, and replay data are in memory and reset on restart.
 
 ## Run locally
