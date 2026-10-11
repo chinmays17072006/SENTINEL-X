@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: sentinel-x
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
