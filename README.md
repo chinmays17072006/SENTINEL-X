@@ -4,7 +4,7 @@
 
 ## Live demos
 
-- **GitHub Pages (static frontend):** https://chinmays17072006.github.io/SENTINEL-X/ — available after the GitHub Pages workflow deploys successfully.
+- **GitHub Pages (static frontend):** https://chinmays17072006.github.io/SENTINEL-X/ — available after enabling branch-based Pages publishing from `main` → `/docs` in repository Settings → Pages.
 - **Existing full prototype on Manus:** [Open the SENTINEL-X prototype](https://sentinelx-mmfhbx3g.manus.space/)
 - **Container deployment on Render:** [Open SENTINEL-X on Render](https://sentinel-x-6onw.onrender.com/)
 
@@ -25,7 +25,7 @@
 - **Container:** `Dockerfile` (Python 3.12)
 - **Deploy configuration:** `render.yaml` describes a Render Docker web service.
 - **Optional map proxy:** server-side environment variables `MANUS_API_URL` and `MANUS_API_KEY`. Do not commit credentials or expose them to browser code.
-- **GitHub Pages:** an automated workflow publishes the static files from `public/`. The GitHub Pages version uses the local schematic map fallback; GitHub Pages cannot execute the Python map proxy.
+- **GitHub Pages:** static files for branch-based Pages publishing are mirrored in `docs/`. The GitHub Pages version uses the local schematic map fallback; GitHub Pages cannot execute the Python map proxy.
 - **State:** simulation state, audit history, and replay data are in memory and reset on restart.
 
 ## Run locally
@@ -81,6 +81,7 @@ The tests expect permission to open a local HTTP server and a working Playwright
 ├── DEPLOYMENT.md
 ├── Dockerfile
 ├── README.md
+├── docs/  # GitHub Pages static site (enable main → /docs in Settings → Pages)
 ├── package_production.py
 ├── render.yaml
 ├── requirements-test.txt
