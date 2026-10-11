@@ -21,7 +21,8 @@
 - **Frontend:** plain HTML, CSS, and JavaScript in `public/`
 - **Backend:** `server.py`, a small Python HTTP server that serves the frontend and exposes `GET /api/map/static`
 - **Container:** `Dockerfile` (Python 3.12)
-- **Configuration:** optional server-side environment variables `MANUS_API_URL` and `MANUS_API_KEY` enable the platform Maps proxy. Do not commit credentials or expose them to browser code.
+- **Deploy configuration:** `render.yaml` describes a Render Docker web service.
+- **Optional map proxy:** server-side environment variables `MANUS_API_URL` and `MANUS_API_KEY`. Do not commit credentials or expose them to browser code.
 - **State:** simulation state, audit history, and replay data are in memory and reset on restart.
 
 ## Run locally
@@ -43,9 +44,19 @@ docker run --rm -p 3000:3000 sentinel-x
 
 If using a supported platform Maps proxy, configure `MANUS_API_URL` and `MANUS_API_KEY` as **runtime secrets** in your host's environment settings. Never add real keys to source code, Docker build arguments, screenshots, or logs.
 
-## Hosting notes
+## Deploy a public copy
 
-GitHub stores the source; it does not run the Python server. **GitHub Pages alone will not run `server.py` or the `/api/map/static` proxy.** For a standalone live deployment with all app routes, use a Python/container host that supports the included `Dockerfile`, and configure runtime secrets there if required. For judging, the Manus live demo above is the working prototype link.
+A Render Blueprint configuration is included in `render.yaml`.
+
+1. Sign in to [Render](https://dashboard.render.com/).
+2. Choose **New → Blueprint** (or the option to create a Blueprint).
+3. Connect GitHub if prompted and select `chinmays17072006/SENTINEL-X`.
+4. Review the `sentinel-x` web service described by `render.yaml`, then apply/create it.
+5. Wait for the Docker build and deploy to finish. Open the generated `https://...onrender.com` URL and test the app.
+
+Render's free web services can spin down after 15 minutes without traffic and can take around a minute to wake up. For the hackathon submission, keep the current Manus live demo as your primary link until the separate deployment has finished and been tested.
+
+GitHub stores the source code; **GitHub Pages alone will not run `server.py` or the `/api/map/static` proxy**.
 
 ## Tests
 
@@ -63,21 +74,25 @@ The tests expect permission to open a local HTTP server and a working Playwright
 
 ```text
 .
-├── Dockerfile
+├── .gitignore
 ├── DEPLOYMENT.md
+├── Dockerfile
 ├── README.md
-├── app.config.ts
 ├── package_production.py
+├── render.yaml
+├── requirements-test.txt
+├── run_tests.sh
+├── server.py
 ├── public/
 │   ├── app.js
 │   ├── index.html
+│   ├── manus-routes.json
 │   ├── operations.js
 │   ├── sentinelx-logo.svg
 │   ├── styles.css
 │   └── traceability.js
-├── server.py
-├── tests/
-└── run_tests.sh
+└── tests/
+    └── test_sentinelx.py
 ```
 
 ## Responsible-use disclaimer
