@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071116">
+  <meta name="description" content="SENTINEL-X — AI Mission Safety & Decision Intelligence. A simulated real-time safety monitoring prototype.">
+  <title>SENTINEL-X — Command Center</title>
+  <link rel="icon" type="image/svg+xml" href="./sentinelx-logo.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#command" aria-label="SENTINEL-X Command Center">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 3.5 30 8v9.2c0 7.1-4.6 12.1-12 15.3C10.6 29.3 6 24.3 6 17.2V8l12-4.5Z"/><path d="M12 19.2 16 23l8-10"/><circle cx="26" cy="10" r="2.2"/></svg></span>
+        <span class="brand-copy"><strong>SENTINEL<span>-X</span></strong><small>AI MISSION SAFETY & DECISION INTELLIGENCE</small></span>
+      </a>
+      <div class="nav-caption">OPERATIONS</div>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-view="command"><span class="nav-icon">⌂</span><span>Command Center</span><span class="nav-count live-dot"></span></button>
+        <button class="nav-link" data-view="personnel"><span class="nav-icon">◉</span><span>Soldier Intelligence</span><span class="nav-count">24</span></button>
+        <button class="nav-link" data-view="environment"><span class="nav-icon">⌖</span><span>Environment & Digital Twin</span></button>
+        <button class="nav-link" data-view="infrastructure"><span class="nav-icon">⌘</span><span>Infrastructure & Cyber</span><span class="nav-count warning-count">2</span></button>
+        <div class="nav-caption nav-caption-spaced">DECISION SUPPORT</div>
+        <button class="nav-link" data-view="intelligence"><span class="nav-icon">◌</span><span>AI Intelligence</span></button>
+        <button class="nav-link" data-view="rescue"><span class="nav-icon">⌁</span><span>What-If & Rescue</span></button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <button class="demo-launch" data-action="run-demo"><span class="demo-play">▶</span><span><strong>RUN DEMO</strong><small>3-MINUTE SCENARIO</small></span><span class="demo-arrow">↗</span></button>
+      <button class="assistant-launch" data-action="assistant-open"><span class="assistant-spark">✳</span><span><strong>SENTINEL AI</strong><small>ASK CURRENT SIMULATION</small></span><span class="keycap">⌘ K</span></button>
+      <div class="sidebar-footer"><span class="safe-lock">◈</span> DECISION SUPPORT ONLY <span class="version">v0.9.4</span></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left"><button class="icon-button mobile-menu" data-action="toggle-sidebar" aria-label="Toggle navigation">☰</button><div class="crumb"><span>OPERATIONS</span><span class="crumb-sep">/</span><strong id="crumb-current">COMMAND CENTER</strong></div></div>
+        <div class="topbar-right">
+          <span class="top-status"><i class="status-dot"></i><span>ALL SYSTEMS</span><b>ONLINE</b></span>
+          <span class="top-divider"></span>
+          <span class="sim-badge"><i></i> SIMULATION MODE</span>
+          <span class="top-divider"></span>
+          <button class="icon-button theme-toggle" data-action="toggle-theme" aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode">☼</button>
+          <button class="icon-button notification-button" data-action="notifications" aria-label="Notifications">♧<i id="notification-count">4</i></button>
+          <button class="operator-button" data-action="admin-panel"><span class="operator-avatar">AD</span><span><strong>ADMIN</strong><small>DEMO OPERATOR</small></span><span class="chevron">⌄</span></button>
+        </div>
+      </header>
+
+      <div class="system-strip"><span><i class="pulse-dot"></i> SIMULATED FEED ACTIVE</span><span class="strip-divider"></span><span>LAST SYNC <b id="last-sync">--:--:--</b></span><span class="strip-divider"></span><span>SECTOR <b>DELTA-07</b></span><span class="strip-spacer"></span><span class="feed-controls"><span id="feed-state">STREAMING</span><button data-action="toggle-feed" id="feed-toggle">PAUSE FEED</button></span></div>
+      <main id="app" class="main-content" aria-live="polite"><div class="loading-state"><i class="pulse-dot"></i> CALIBRATING LOCAL SIMULATION…</div></main>
+      <footer class="site-footer"><span>© SENTINEL-X / SAFETY INTELLIGENCE</span><span>SIMULATION PROTOTYPE <b>•</b> AI-GENERATED DECISION SUPPORT <b>•</b> HUMAN APPROVAL REQUIRED</span></footer>
+    </div>
+  </div>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <div id="assistant-root"></div>
+  <script src="./app.js" defer></script>
+  <script src="./operations.js" defer></script>
+  <script src="./traceability.js" defer></script>
+</body>
+</html>
