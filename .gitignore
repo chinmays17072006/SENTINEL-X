@@ -1,0 +1,16 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Generated packages and OS files
+sentinelx-production.zip
+.DS_Store
+Thumbs.db
